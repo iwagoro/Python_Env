@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+    NextJs:
+        build: .
+        volumes:
+            - ./app:/workspace/app
+        working_dir: /workspace/app
+        #command: node
+        tty: true

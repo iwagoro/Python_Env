@@ -1,0 +1,86 @@
+{
+    "name": "Python_Dl_Env",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "workspaceFolder": "/workspace",
+    "dockerComposeFile": "./docker-compose.yml",
+    "shutdownAction": "stopCompose",
+    "init": true,
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.formatting.provider": "none",
+                "python.linting.pylintEnabled": false,
+                "python.linting.lintOnSave": true,
+                "python.defaultInterpreterPath": "/opt/conda/bin/python",
+                "[python]": {
+                    "editor.formatOnPaste": true,
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": true
+                    },
+                    "explorer.confirmDragAndDrop": false,
+                    "editor.glyphMargin": false,
+                    "editor.minimap.enabled": false,
+                    "terminal.integrated.fontSize": 16,
+                    "debug.console.fontSize": 16,
+                    "editor.mouseWheelZoom": true,
+                    "explorer.openEditors.visible": 1,
+                    "workbench.colorTheme": "Kawaine Theme",
+                    "workbench.statusBar.visible": true,
+                    "workbench.iconTheme": "catppuccin-macchiato",
+                    "editor.formatOnPaste": true,
+                    "editor.autoIndent": "advanced",
+                    "indentRainbow.errorColor": "",
+                    "editor.bracketPairColorization.enabled": true,
+                    "workbench.colorCustomizations": {
+                        "editorBracketHighlight.foreground1": "#FF0000", // 赤
+                        "editorBracketHighlight.foreground2": "#FFBF3F", // 橙
+                        "editorBracketHighlight.foreground3": "#FFFF00", // 黄
+                        "editorBracketHighlight.foreground4": "#3FFF3F", // 緑
+                        "editorBracketHighlight.foreground5": "#3F7FFF", // 青
+                        "editorBracketHighlight.foreground6": "#FF7FFF" // 紫
+                    },
+                    "indentRainbow.colors": ["rgba(102, 74, 179,0.7)", "rgba(162, 71, 168,0.7)", "rgba(159, 97, 195,0.7)", "rgba(144, 116,217,0.7)"],
+                    "indentRainbow.ignoreLinePatterns": ["/[ \t]* [*]/g", "/[ \t]+[/]{2}/g"],
+                    "editor.detectIndentation": false,
+                    "editor.guides.bracketPairs": "active",
+                    "indentRainbow.tabmixColor": "rgba(128,32,96,1)",
+                    "editor.inlineSuggest.enabled": true,
+                    "security.workspace.trust.untrustedFiles": "open",
+                    "editor.formatOnSave": true,
+                    "explorer.confirmDelete": false,
+                    "workbench.tree.indent": 24,
+                    "explorer.compactFolders": false,
+                    "material-icon-theme.folders.theme": "none",
+                    "editor.cursorSmoothCaretAnimation": "on",
+                    "editor.cursorBlinking": "expand",
+                    "editor.cursorStyle": "block",
+                    "glassit.alpha": 240,
+                    "material-icon-theme.activeIconPack": "react",
+                    "editor.smoothScrolling": true,
+                    "workbench.list.smoothScrolling": true,
+                    "terminal.integrated.smoothScrolling": true
+                },
+                "ruff.args": ["--select=E,W,F,B,I,N,A,UP,C4,PL,PD,NPY,C90,COM"]
+            },
+            "extensions": ["ms-python.python", "ms-python.black-formatter", "charliermarsh.ruff", "KevinRose.vsc-python-indent", "njpwerner.autodocstring", "Gruntfuggly.activitusbar", "s-nlf-fh.glassit", "sazumiviki.kawaine-theme", "PKief.material-icon-theme", "GitHub.copilot", "oderwat.indent-rainbow", "GitHub.copilot-chat"]
+        }
+    },
+    "features": {
+        // Git
+        "ghcr.io/devcontainers/features/git:latest": {
+            "version": "latest",
+            "ppa": true
+        },
+        // Mambaforge
+        "ghcr.io/rocker-org/devcontainer-features/miniforge:latest": {
+            "version": "latest",
+            "variant": "Mambaforge"
+        }
+    },
+    "postCreateCommand": "/bin/bash ${containerWorkspaceFolder}/.devcontainer/setup.sh"
+}
